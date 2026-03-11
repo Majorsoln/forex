@@ -22,8 +22,8 @@
 //+------------------------------------------------------------------+
 input group "========== RISK MANAGEMENT: DLR SETTINGS =========="
 input double InpRiskDailyLossPct = 4.5;          // Daily Loss Risk % (DLR)
-input int    InpRiskMaxTradesPerDay = 25;        // Max Trades Per Day
-input int    InpRiskMaxOpenPositions = 15;       // Max Open Positions
+input int    InpRiskMaxTradesPerDay = 15;        // Max Trades Per Day
+input int    InpRiskMaxOpenPositions = 5;       // Max Open Positions
 input bool   InpRiskEnableDLRTracking = true;    // Enable DLR CSV Tracking
 
 
@@ -148,7 +148,7 @@ public:
         
         // Calculate DRA parameters
         m_r_base = m_dlr_base / m_max_trades_per_day;
-        m_r_cap = 2.0 * m_r_base;
+        m_r_cap = 1.0 * m_r_base;
         m_r_min = 0.25 * m_r_base;
         
         m_last_reset_time = TimeCurrent();
@@ -869,4 +869,5 @@ public:
         m_r_min = 0.25 * m_r_base;
     }
 };
+
 //+------------------------------------------------------------------+
